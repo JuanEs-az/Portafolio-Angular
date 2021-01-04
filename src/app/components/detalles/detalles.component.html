@@ -1,0 +1,28 @@
+<div class="container" *ngIf="project">
+    <div class="message success" *ngIf=' deleted == "true" ' >
+        El proyecto ha sido eliminado con exito, pulsa <a [routerLink]="['/proyectos']">aquí</a> para volver
+    </div>
+
+    <div class="message failed" *ngIf=' deleted == "false" ' >
+        El proyecto no se pudo eliminar
+    </div>
+
+    <div class="img">
+        <img src="{{url + 'getImage/' + project.image}}" *ngIf="project.image"/>  
+    </div>
+    <div class="data">
+        <h1>{{project.name}}</h1>
+        <h3>{{project.description}}</h3>
+        <p>{{project.langs}}</p>
+        <p *ngIf="!confirm">
+            <a [routerLink]="['/proyectos',project._id,'editar']" class="btneditar btns" >Editar</a>
+            <a class="btndelete btns" (click)="confirmToggle()">Borrar</a>
+        </p>
+        <div *ngIf="confirm">
+            <h3>¿Seguro que quieres eliminar este proyecto?</h3>
+            <a class="btneditar btns" (click)="confirmToggle()">Cancelar</a>
+            <a class="btndelete btns" (click)="deleteProject()">Eliminar</a>
+        </div>
+    </div>
+    
+</div>

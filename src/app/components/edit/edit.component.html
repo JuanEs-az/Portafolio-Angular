@@ -1,0 +1,51 @@
+<div class="container" *ngIf="project">
+    <h2>{{title}} "{{project.name}}"</h2>
+    <div class="message success" *ngIf=" sent == 'true' ">
+        El proyecto ha sido actualizado con exito, pulsa <a [routerLink]="['/proyectos',idSaved]">aquí</a> para verlo
+    </div>
+
+    <div class="message failed" *ngIf=" sent == 'false' ">
+        El proyecto no se pudo actualizar
+    </div>
+
+    <form #updateProject="ngForm" (ngSubmit)="onSubmit(updateProject)" action="">
+        <p>
+            <label for="name">Nombre:</label>
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="project.name" required/>
+
+            <span class="mensajeAlerta" *ngIf="name.touched && !name.valid">
+                El nombre es obligatorio
+            </span>
+        </p>
+        <p>
+            <label for="description">Descripción:</label>
+            <textarea name="description" #description="ngModel" [(ngModel)]="project.description" required></textarea>
+
+            <span class="mensajeAlerta" *ngIf="description.touched && !description.valid">
+                La descripcion es obligatoria
+            </span>
+        </p>
+        <p>
+            <label for="year">Año:</label>
+            <input type="number" name="year" #year="ngModel" [(ngModel)]="project.year"/>
+        </p>
+        <p>
+            <label for="langs">Tecnologías:</label>
+            <input type="text" name="langs" #langs="ngModel" [(ngModel)]="project.langs" required/>
+
+            <span class="mensajeAlerta" *ngIf="langs.touched && !langs.valid">
+                Las tecnologías son obligatoria
+            </span>
+        </p>
+        <p>
+            
+            <label for="img">Imagen del Proyecto:</label>
+            <span class="img" style="float:none;">
+                <img src="{{url + 'getImage/' + project.image}}" *ngIf="project.image" style="width: 100px;height: auto"/>  
+            </span>
+            <br/>
+            <input type="file" name="img"  (change)="changeFile($event)"  placeholder="Subir imagen"/>
+        </p>
+        <input type="submit" value="Actualizar" [disabled]="!updateProject.form.valid">
+    </form>
+</div>

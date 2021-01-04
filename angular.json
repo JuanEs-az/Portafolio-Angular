@@ -24,9 +24,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/assets/css/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bxslider/dist/jquery.bxslider.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -87,9 +90,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bxslider/dist/jquery.bxslider.css",
+              "node_modules/bxslider/src/css/jquery.bxslider.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/bxslider/dist/jquery.bxslider.js"
+            ]
           }
         },
         "lint": {
@@ -120,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "portfolio-angular"
+  "defaultProject": "portfolio-angular",
+  "cli": {
+    "analytics": false
+  }
 }

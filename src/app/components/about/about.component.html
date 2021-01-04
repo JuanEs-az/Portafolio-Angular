@@ -1,0 +1,22 @@
+<div id="title">
+  <h1>{{title}}</h1>
+  <h2>{{subtitle}}</h2>
+  <p *ngIf="isWeb;then web else email"></p>
+</div>
+
+<ng-template #web>
+    <a href="https://{{email_web}}">{{email_web}}</a>
+</ng-template>
+
+<ng-template #email>
+    <a href="mailto:{{email_web}}">{{email_web}}</a>
+</ng-template>
+<article class="about">
+  <h2>Sobre mí</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt euismod ante, et tincidunt nunc malesuada
+    pharetra. Nam neque diam, volutpat semper accumsan in, imperdiet sed quam. Quisque id dapibus odio. Curabitur sed
+    posuere arcu. Sed at orci hendrerit libero sagittis porta varius non nibh. Maecenas consequat a neque pharetra
+    egestas. Vestibulum condimentum, dui sit amet fermentum vehicula, quam lorem tincidunt tortor, at aliquet libero
+    elit eu justo. Suspendisse nec dui quis lacus elementum tincidunt eget ut enim. Integer ac semper lacus. Duis non
+    posuere dui. Proin quis leo leo.</p>
+</article>

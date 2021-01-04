@@ -1,0 +1,12 @@
+<ul>
+    <li *ngFor="let project of projects" class="project">
+        <div class="img">
+          <img src='{{url}}getImage/{{project.image}}' *ngIf="project.image">  
+        </div>
+        <a [routerLink]="['/proyectos',project._id]"><h2>{{project.name}}</h2></a>
+        <p>{{project.langs}}</p>
+
+        <input type="button" value="Eliminar" class="btndelete" (click)="deleteProject(project._id)">
+    </li>
+    <li class="clearfix"></li>
+</ul>
